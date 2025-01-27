@@ -12,30 +12,16 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { useAuthActions } from "@convex-dev/auth/react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Link from "next/link";
-import { useToast } from "@/hooks/use-toast";
 
 export default function Donation() {
   const donations = useQuery(api.donations.listForStreamer);
   const { signOut } = useAuthActions();
-  const { toast } = useToast();
   if (!donations) {
     return <div>Loading...</div>;
   }

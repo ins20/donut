@@ -47,7 +47,9 @@ export default function DonatePage({
         streamerId: params.streamerId,
       });
       form.reset();
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

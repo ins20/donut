@@ -52,7 +52,7 @@ export default function DonatePage({
 
   return (
     <div className="container mx-auto p-4 max-w-md">
-      <h1 className="text-2xl font-bold mb-4">Donate to Streamer</h1>
+      <h1 className="text-2xl font-bold mb-4">Донат стримеру</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
@@ -60,7 +60,7 @@ export default function DonatePage({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Your Name</FormLabel>
+                <FormLabel>Имя</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -73,13 +73,13 @@ export default function DonatePage({
             name="amount"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Amount</FormLabel>
+                <FormLabel>Сумма (руб.)</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
                     {...field}
                     onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                  />  
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -90,7 +90,7 @@ export default function DonatePage({
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Message</FormLabel>
+                <FormLabel>Сообщение</FormLabel>
                 <FormControl>
                   <Textarea {...field} />
                 </FormControl>
@@ -99,10 +99,13 @@ export default function DonatePage({
             )}
           />
           <Button type="submit" className="w-full">
-            Donate
+            Задонатить
           </Button>
         </form>
       </Form>
+      <footer className="fixed bottom-0">
+        donutauth@gmail.com Ибрагимов Никита Сергеевич ИНН:182402617697
+      </footer>
     </div>
   );
 }

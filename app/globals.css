@@ -67,7 +67,34 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
+/* Основной счетчик для разделов */
+ol.counter-reset-section {
+  counter-reset: section;
+}
 
+/* Счетчик для подразделов */
+ol.counter-reset-subsection {
+  counter-reset: subsection;
+}
+
+/* Нумерация разделов */
+ol.counter-reset-section > li {
+  counter-increment: section;
+}
+
+/* Нумерация подразделов */
+ol.counter-reset-subsection > li {
+  counter-increment: subsection;
+}
+
+/* Отображение нумерации разделов и подразделов */
+ol.counter-reset-section > li::before {
+  content: counter(section) ". ";
+}
+
+ol.counter-reset-subsection > li::before {
+  content: counter(section) "." counter(subsection) " ";
+}
 @layer base {
   * {
     @apply border-border;

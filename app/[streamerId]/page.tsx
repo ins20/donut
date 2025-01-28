@@ -17,11 +17,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import Link from "next/link";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
   amount: z.number().min(10),
   message: z.string().min(2).max(150),
+  offer: z.boolean(),
 });
 
 export default function DonatePage({
@@ -35,6 +38,7 @@ export default function DonatePage({
       name: "",
       amount: 0,
       message: "",
+      offer: false,
     },
   });
 
@@ -48,7 +52,7 @@ export default function DonatePage({
       });
       form.reset();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -97,6 +101,26 @@ export default function DonatePage({
                   <Textarea {...field} />
                 </FormControl>
                 <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="offer"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Checkbox
+                    required
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+                <FormLabel>
+                  <Button asChild variant={"link"}>
+                    <Link href="/offer">Пользовательское соглашение</Link>
+                  </Button>
+                </FormLabel>
               </FormItem>
             )}
           />

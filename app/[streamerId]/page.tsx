@@ -47,7 +47,9 @@ export default function DonatePage({
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       await createDonation({
-        ...values,
+        name: values.name,
+        amount: values.amount,
+        message: values.message,
         streamerId: params.streamerId,
       });
       form.reset();

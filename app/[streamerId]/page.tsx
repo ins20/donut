@@ -18,6 +18,7 @@ import {
 import Link from "next/link";
 import { Checkbox } from "@/components/ui/checkbox";
 import { payment } from "@/actions";
+import { useRouter } from "next/router";
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
@@ -42,10 +43,11 @@ export default function DonatePage({
       offer: false,
     },
   });
-
+  const router = useRouter();
   async function onSubmit(values: valuesPayment) {
     try {
-      await payment(values, params.streamerId);
+      const data = await payment(values, params.streamerId);
+      router.push(data.confirmation.confirmation_url);
     } catch (error) {
       console.log(error);
     }

@@ -1,9 +1,10 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { valuesPayment } from "./app/[streamerId]/page";
 
 export async function payment(values: valuesPayment, streamerId: string) {
-  await fetch("https://api.yookassa.ru/v3/payments", {
+  const res = await fetch("https://api.yookassa.ru/v3/payments", {
     method: "POST",
     headers: {
       Authorization: `Basic ${btoa("1023828:test_a_4MZObw5RxTgchTi53Ld0J8Ytp4MFp-iHIhzHOU3BY")}`,
@@ -25,4 +26,5 @@ export async function payment(values: valuesPayment, streamerId: string) {
       metadata: values,
     }),
   }).then((res) => res.json());
+  redirect(res.confirmation.confirmation_url);
 }

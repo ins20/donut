@@ -45,7 +45,8 @@ export default function DonatePage({
 
   async function onSubmit(values: valuesPayment) {
     try {
-      await payment(values, params.streamerId);
+      const data = await payment(values, params.streamerId);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }

@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/form";
 import Link from "next/link";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
@@ -32,6 +33,7 @@ export default function DonatePage({
 }: {
   params: { streamerId: Id<"users"> };
 }) {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,13 +48,31 @@ export default function DonatePage({
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      await createDonation({
-        name: values.name,
-        amount: values.amount,
-        message: values.message,
-        streamerId: params.streamerId,
-      });
-      form.reset();
+      const res = await fetch(
+        "https://api.yookassa.ru/v3/payments/1023830:test_HP-bDG8RXIScfzK7rPtn841_WkiPWcW7fpH9umguFsY",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Idempotence-Key": new Date().toString(),
+          },
+          body: JSON.stringify({
+            amount: {
+              value: String(values.amount),
+              currency: "RUB",
+            },
+            payment_method_data: {
+              type: "sbp",
+            },
+            confirmation: {
+              type: "redirect",
+              return_url: `https://donut-psi.vercel.app/${params.streamerId}`,
+            },
+            metadata: values,
+          }),
+        }
+      ).then((res) => res.json());
+      router.push(res.confirmation.return_url);
     } catch (error) {
       console.log(error);
     }

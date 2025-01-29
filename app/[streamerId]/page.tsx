@@ -54,7 +54,7 @@ export default function DonatePage({
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Idempotence-Key": new Date().toString(),
+            "Idempotence-Key": new Date().getTime().toString(),
           },
           body: JSON.stringify({
             amount: {

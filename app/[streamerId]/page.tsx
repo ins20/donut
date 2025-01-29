@@ -51,7 +51,7 @@ export default function DonatePage({
       const res = await fetch("https://api.yookassa.ru/v3/payments/", {
         method: "POST",
         headers: {
-          Authorization: `Basic ${btoa("1023837:test_gGyIHAufvXfLoyofv5hnfxt8i-pwuNdnRHDCZUql85M")}`,
+          Authorization: `Basic ${btoa("1023830:test_HP-bDG8RXIScfzK7rPtn841_WkiPWcW7fpH9umguFsY")}`,
           "Content-Type": "application/json",
           "Idempotence-Key": new Date().getTime().toString(),
         },

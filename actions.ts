@@ -1,6 +1,5 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import { valuesPayment } from "./app/[streamerId]/page";
 
 export async function payment(values: valuesPayment, streamerId: string) {

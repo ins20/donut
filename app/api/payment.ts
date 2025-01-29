@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest } from "next";
 
 export default function handler(req: NextApiRequest) {
   if (req.method === "POST") {

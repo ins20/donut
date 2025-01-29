@@ -1,5 +1,6 @@
+import { api } from "./_generated/api";
 import { Id } from "./_generated/dataModel";
-import { mutation, query } from "./_generated/server";
+import { httpAction, mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 export const create = mutation({
@@ -17,7 +18,21 @@ export const create = mutation({
     return donationId;
   },
 });
+export const createDonation = httpAction(async (ctx, request) => {
+  const body = await request.json();
 
+  const donationId = await ctx.runMutation(api.donations.create, {
+    streamerId: body.metadata.streamerId,
+    name: body.metadata.name,
+    message: body.metadata.message,
+    amount: body.amount.value,
+  });
+
+  return new Response(JSON.stringify({ donationId }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
+});
 export const listForStreamer = query({
   handler: async (ctx) => {
     const user = await ctx.auth.getUserIdentity();

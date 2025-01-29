@@ -22,7 +22,7 @@ export async function payment(values: valuesPayment, streamerId: string) {
         capture: true,
         confirmation: {
           type: "redirect",
-          return_url: `https://donut-psi.vercel.app/${streamerId}`,
+          return_url: `https://donut-psi.vercel.app`,
         },
         metadata: values,
       }),

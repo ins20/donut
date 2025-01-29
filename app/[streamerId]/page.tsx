@@ -48,7 +48,7 @@ export default function DonatePage({
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const res = await fetch("https://api.yookassa.ru/v3/payments", {
+      const res = await fetch("https://api.yookassa.ru/v3/payments/", {
         method: "POST",
         headers: {
           Authorization: `Basic ${btoa("1023837:test_gGyIHAufvXfLoyofv5hnfxt8i-pwuNdnRHDCZUql85M")}`,

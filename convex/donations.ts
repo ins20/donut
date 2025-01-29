@@ -20,7 +20,7 @@ export const create = mutation({
 });
 export const createDonation = httpAction(async (ctx, request) => {
   const body = await request.json();
-  console.log(body)
+  console.log(body);
   // const donationId = await ctx.runMutation(api.donations.create, {
   //   streamerId: body.metadata.streamerId,
   //   name: body.metadata.name,
@@ -28,7 +28,7 @@ export const createDonation = httpAction(async (ctx, request) => {
   //   amount: body.amount.value,
   // });
 
-  return new Response(JSON.stringify({ donationId }), {
+  return new Response("", {
     status: 200,
     headers: { "Content-Type": "application/json" },
   });

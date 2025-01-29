@@ -24,7 +24,7 @@ export const createDonation = httpAction(async (ctx, request) => {
     streamerId: data.object.metadata.streamerId,
     name: data.object.metadata.name,
     message: data.object.metadata.message,
-    amount: data.object.amount.value,
+    amount: parseFloat(data.object.amount.value),
   });
 
   return new Response("", {

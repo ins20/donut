@@ -24,7 +24,11 @@ export async function payment(values: valuesPayment, streamerId: string) {
           type: "redirect",
           return_url: `https://donut-psi.vercel.app`,
         },
-        metadata: values,
+        metadata: {
+          streamerId: streamerId,
+          name: values.name,
+          message: values.message,
+        },
       }),
     }).then((res) => res.json());
     return res;

@@ -18,8 +18,9 @@ export async function payment(values: valuesPayment, streamerId: string) {
           currency: "RUB",
         },
         payment_method_data: {
-          type: "sbp",
+          type: "bank_card",
         },
+        capture: true,
         confirmation: {
           type: "redirect",
           return_url: `https://donut-psi.vercel.app/${streamerId}`,

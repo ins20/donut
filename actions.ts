@@ -28,7 +28,7 @@ export async function payment(values: valuesPayment, streamerId: string) {
         metadata: values,
       }),
     }).then((res) => res.json());
-    return res;
+    redirect(res.confirmation.confirmation_url);
   } catch (error) {
     console.log(error);
   }

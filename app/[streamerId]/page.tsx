@@ -1,8 +1,6 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-// import { useMutation } from "convex/react";
-// import { api } from "@/convex/_generated/api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -20,6 +18,7 @@ import {
 import Link from "next/link";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useRouter } from "next/navigation";
+import { payment } from "@/actions";
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
@@ -28,13 +27,14 @@ const formSchema = z.object({
   offer: z.boolean(),
 });
 
+export type valuesPayment = z.infer<typeof formSchema>;
+
 export default function DonatePage({
   params,
 }: {
   params: { streamerId: Id<"users"> };
 }) {
-  const router = useRouter();
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<valuesPayment>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -44,33 +44,9 @@ export default function DonatePage({
     },
   });
 
-  // const createDonation = useMutation(api.donations.create);
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: valuesPayment) {
     try {
-      const res = await fetch("https://api.yookassa.ru/v3/payments/", {
-        method: "POST",
-        headers: {
-          Authorization: `Basic ${btoa("1023828:test_a_4MZObw5RxTgchTi53Ld0J8Ytp4MFp-iHIhzHOU3BY")}`,
-          "Content-Type": "application/json",
-          "Idempotence-Key": new Date().getTime().toString(),
-        },
-        body: JSON.stringify({
-          amount: {
-            value: String(values.amount),
-            currency: "RUB",
-          },
-          payment_method_data: {
-            type: "sbp",
-          },
-          confirmation: {
-            type: "redirect",
-            return_url: `https://donut-psi.vercel.app/${params.streamerId}`,
-          },
-          metadata: values,
-        }),
-      }).then((res) => res.json());
-      router.push(res.confirmation.return_url);
+      await payment(values, params.streamerId);
     } catch (error) {
       console.log(error);
     }

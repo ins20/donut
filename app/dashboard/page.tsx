@@ -70,12 +70,6 @@ export default function Donation() {
   const deleteGoal = useMutation(api.goals.deleteGoal);
   const updateGoalStyle = useMutation(api.goalStyles.updateGoalStyle);
   const updateGoal = useMutation(api.goals.updateGoal);
-  const [activeAlert, setActiveAlert] = useState<string>(
-    "k97e4qnb5mh5qep0ymqr3es8q579c737"
-  );
-  const [activeGoalStyle, setActiveGoalStyle] = useState<string>(
-    "ks7684g8hcrzn4pq99cbrf36rh79cce6"
-  );
   const handleAddAlert = () => {
     addAlert();
   };
@@ -146,7 +140,7 @@ export default function Donation() {
                 </Button>
               </CardHeader>
               <CardContent>
-                <Tabs value={activeAlert} onValueChange={setActiveAlert}>
+                <Tabs>
                   <ScrollArea>
                     <TabsList>
                       {alertStyles?.map((style) => (
@@ -192,7 +186,6 @@ export default function Donation() {
                           await deleteAlert({
                             id: style._id,
                           });
-                          setActiveAlert("k97e4qnb5mh5qep0ymqr3es8q579c737");
                         }}
                       />
                     </TabsContent>
@@ -212,10 +205,7 @@ export default function Donation() {
                 </Button>
               </CardHeader>
               <CardContent>
-                <Tabs
-                  value={activeGoalStyle}
-                  onValueChange={setActiveGoalStyle}
-                >
+                <Tabs>
                   <TabsList>
                     {goalStyles?.map((style) => (
                       <TabsTrigger key={style._id} value={style._id}>
@@ -253,9 +243,6 @@ export default function Donation() {
                           await deleteGoalStyle({
                             id: style._id,
                           });
-                          setActiveGoalStyle(
-                            "ks7684g8hcrzn4pq99cbrf36rh79cce6"
-                          );
                         }}
                       />
                     </TabsContent>
@@ -664,7 +651,7 @@ function FormGoal({
                   onClick={async () => {
                     try {
                       await navigator.clipboard.writeText(
-                        `http://localhost:3000/${id}/goal`
+                        `https://donut-psi.vercel.app/${id}/goal`
                       );
                       toast({
                         title: "Ссылка скопирована",
@@ -693,11 +680,7 @@ function FormGoal({
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  {...field}
-                  disabled={id === "k5730n1afw01hv6jfchwg50wjh79dy3w"}
-                  placeholder={"Название"}
-                />
+                <Input {...field} placeholder={"Название"} />
               </FormControl>
             </FormItem>
           )}
@@ -746,12 +729,7 @@ function FormGoal({
             </FormItem>
           )}
         />
-        <Button
-          type="button"
-          disabled={id === "k5730n1afw01hv6jfchwg50wjh79dy3w"}
-          size={"sm"}
-          onClick={onDelete}
-        >
+        <Button type="button" size={"sm"} onClick={onDelete}>
           Удалить
         </Button>
       </form>

@@ -281,10 +281,10 @@ export default function Donation() {
                               await updateGoal({
                                 id: goal._id,
                                 ...values,
-                                alertStyleId:
-                                  values.alertStyleId as Id<"alertStyles">,
-                                goalStyleId:
-                                  values.goalStyleId as Id<"goalStyles">,
+                                alertStyleId: (values.alertStyleId ||
+                                  undefined) as Id<"alertStyles">,
+                                goalStyleId: (values.alertStyleId ||
+                                  undefined) as Id<"goalStyles">,
                               });
                               toast({
                                 title: "Сбор обновлен!",

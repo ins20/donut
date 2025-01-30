@@ -27,6 +27,7 @@ const schema = defineSchema({
     streamerId: v.id("users"),
     name: v.string(),
     direction: v.optional(v.boolean()),
+    backgroundColor: v.optional(v.string()),
     colorFilled: v.optional(v.string()),
     colorBorder: v.optional(v.string()),
   }).index("by_streamer", ["streamerId"]),

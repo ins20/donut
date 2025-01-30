@@ -220,6 +220,7 @@ export default function Donation() {
                           name: style.name,
                           colorBorder: style.colorBorder || "",
                           colorFilled: style.colorFilled || "",
+                          backgroundColor: style.backgroundColor || "",
                           direction: style.direction || false,
                         }}
                         onUpdate={async (values) => {
@@ -467,6 +468,7 @@ const formSchemaGoalSyles = z.object({
   name: z.string(),
   colorBorder: z.string(),
   colorFilled: z.string(),
+  backgroundColor: z.string(),
   direction: z.boolean(),
 });
 
@@ -496,6 +498,7 @@ function FormGoalStyles({
         name: data.name || "",
         colorBorder: data.colorBorder || "",
         colorFilled: data.colorFilled || "",
+        backgroundColor: data.backgroundColor || "",
         direction: data.direction || false,
       });
     });
@@ -530,6 +533,18 @@ function FormGoalStyles({
           <FormField
             control={formGoalStyle.control}
             name="colorFilled"
+            render={({ field }) => (
+              <FormItem className="w-1/2">
+                <FormLabel>Цвет сбора</FormLabel>
+                <FormControl>
+                  <Input type="color" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={formGoalStyle.control}
+            name="backgroundColor"
             render={({ field }) => (
               <FormItem className="w-1/2">
                 <FormLabel>Цвет фона</FormLabel>

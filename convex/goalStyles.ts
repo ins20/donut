@@ -37,6 +37,7 @@ export const updateGoalStyle = mutation({
     name: v.optional(v.string()),
     direction: v.optional(v.boolean()),
     colorFilled: v.optional(v.string()),
+    backgroundColor: v.optional(v.string()),
     colorBorder: v.optional(v.string()),
   },
   handler: async (ctx, args) => {

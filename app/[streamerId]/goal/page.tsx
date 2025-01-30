@@ -16,16 +16,17 @@ export default function Widget({
     goal?.collected && goal?.total
       ? ((100 * goal?.collected) / goal?.total).toFixed()
       : 0;
+  const isVertical = goal?.goalStyle?.direction;
   return (
     <div className="h-screen flex items-center justify-center">
       <div className="bg-none">
         <h1>{goal?.title}</h1>
         <div
           style={{
-            background: `linear-gradient(90deg, ${goal?.goalStyle?.colorFilled} ${percent}%, red ${percent}%)`,
+            background: `linear-gradient(${isVertical ? "90deg" : "0deg"}, ${goal?.goalStyle?.colorFilled} ${percent}%, ${goal?.goalStyle?.backgroundColor} ${percent}%)`,
             borderColor: goal?.goalStyle?.colorBorder,
           }}
-          className={`w-96 border text-white flex justify-center`}
+          className={`${isVertical ? "w-32 h-52 items-center" : "w-96"} border text-white flex justify-center`}
         >
           {goal?.collected || "0"} / {goal?.total}
         </div>

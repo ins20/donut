@@ -15,16 +15,23 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import Link from "next/link";
-import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { payment } from "@/actions";
 import { useRouter } from "next/navigation";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
   amount: z.number().min(10),
   message: z.string().min(2).max(150),
-  offer: z.boolean(),
+  goalId: z.string().min(2).max(150),
 });
 
 export type valuesPayment = z.infer<typeof formSchema>;
@@ -40,10 +47,12 @@ export default function DonatePage({
       name: "",
       amount: 0,
       message: "",
-      offer: false,
+      goalId: "k5730n1afw01hv6jfchwg50wjh79dy3w",
     },
   });
   const router = useRouter();
+  const goals = useQuery(api.goals.getGoals);
+
   async function onSubmit(values: valuesPayment) {
     try {
       const data = await payment(values, params.streamerId);
@@ -103,21 +112,27 @@ export default function DonatePage({
           />
           <FormField
             control={form.control}
-            name="offer"
+            name="goalId"
             render={({ field }) => (
               <FormItem>
-                <FormControl>
-                  <Checkbox
-                    required
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <FormLabel>
-                  <Button asChild variant={"link"}>
-                    <Link href="/offer">Пользовательское соглашение</Link>
-                  </Button>
-                </FormLabel>
+                <FormLabel>Сбор</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Сбор" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {goals?.map((goal) => (
+                      <SelectItem key={goal._id} value={goal._id}>
+                        {goal.title}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </FormItem>
             )}
           />
@@ -126,9 +141,6 @@ export default function DonatePage({
           </Button>
         </form>
       </Form>
-      <footer className="fixed bottom-0">
-        donutauth@gmail.com Ибрагимов Никита Сергеевич ИНН:182402617697
-      </footer>
     </div>
   );
 }

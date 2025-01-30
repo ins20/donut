@@ -20,7 +20,7 @@ export default function Widget({
       setShowDonation(true);
       const timer = setTimeout(() => {
         setShowDonation(false);
-      }, 5000);
+      }, latestDonation.goal?.alertStyle?.duration);
       return () => clearTimeout(timer);
     }
   }, [latestDonation]);
@@ -30,7 +30,14 @@ export default function Widget({
       {!showDonation || !latestDonation ? (
         <></>
       ) : (
-        <div className="text-white p-4 rounded-lg shadow-lg">
+        <div
+          style={{
+            color: latestDonation.goal?.alertStyle?.textColor,
+            backgroundColor: latestDonation.goal?.alertStyle?.backgroundColor,
+            fontSize: latestDonation.goal?.alertStyle?.fontSize,
+          }}
+          className="p-4 rounded-lg shadow-lg"
+        >
           <div className="flex items-center">
             <h2
               style={{

@@ -5,6 +5,7 @@ import { v } from "convex/values";
 
 export const create = mutation({
   args: {
+    goalId: v.id("goals"),
     streamerId: v.id("users"),
     name: v.string(),
     amount: v.number(),
@@ -15,18 +16,22 @@ export const create = mutation({
       ...args,
       createdAt: Date.now(),
     });
+    const collected = (await ctx.db.get(args.goalId))?.collected || 0;
+    await ctx.db.patch(args.goalId, {
+      collected: collected + args.amount,
+    });
     return donationId;
   },
 });
 export const createDonation = httpAction(async (ctx, request) => {
   const data = await request.json();
   await ctx.runMutation(api.donations.create, {
+    goalId: data.object.metadata.goalId,
     streamerId: data.object.metadata.streamerId,
     name: data.object.metadata.name,
     message: data.object.metadata.message,
     amount: parseFloat(data.object.amount.value),
   });
-
   return new Response("", {
     status: 200,
     headers: { "Content-Type": "application/json" },
@@ -56,6 +61,27 @@ export const getLatestForStreamer = query({
       .withIndex("by_streamer", (q) => q.eq("streamerId", args.streamerId))
       .order("desc")
       .first();
-    return latestDonation;
+
+    if (!latestDonation) {
+      return null;
+    }
+    const goal = await ctx.db.get(latestDonation.goalId);
+
+    if (!goal) {
+      return { ...latestDonation, goal: null };
+    }
+
+    const [alertStyle, goalStyle] = await Promise.all([
+      goal.alertStyleId ? ctx.db.get(goal.alertStyleId) : null,
+      goal.goalStyleId ? ctx.db.get(goal.goalStyleId) : null,
+    ]);
+
+    return {
+      ...latestDonation,
+      goal: {
+        ...goal,
+        alertStyle,
+      },
+    };
   },
 });

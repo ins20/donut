@@ -16,8 +16,8 @@ export default function RootLayout({
 }>) {
   return (
     <ConvexAuthNextjsServerProvider>
-      <html lang="en">
-        <body>
+      <html lang="en" className="h-full">
+        <body className="h-full">
           <ConvexClientProvider>
             {children}
             <Toaster />

@@ -19,14 +19,14 @@ export default function Widget({
   const isVertical = goal?.goalStyle?.direction;
   return (
     <div className="h-screen flex items-center justify-center">
-      <div className="bg-none mx-auto">
+      <div className="bg-none">
         <h1>{goal?.title}</h1>
         <div
           style={{
             background: `linear-gradient(${isVertical ? "0deg" : "90deg"}, ${goal?.goalStyle?.colorFilled} ${percent}%, ${goal?.goalStyle?.backgroundColor} ${percent}%)`,
             borderColor: goal?.goalStyle?.colorBorder,
           }}
-          className={`${isVertical ? "w-32 h-52 items-center" : "w-96"} border text-white flex justify-center`}
+          className={`mx-auto ${isVertical ? "w-32 h-52 items-center" : "w-96"} border text-white flex justify-center`}
         >
           {goal?.collected || "0"} / {goal?.total}
         </div>

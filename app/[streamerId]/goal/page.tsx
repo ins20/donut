@@ -19,7 +19,7 @@ export default function Widget({
   const isVertical = goal?.goalStyle?.direction;
   return (
     <div className="h-screen flex items-center justify-center">
-      <div className="bg-none">
+      <div className="bg-none mx-auto">
         <h1>{goal?.title}</h1>
         <div
           style={{

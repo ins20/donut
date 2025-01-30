@@ -283,7 +283,7 @@ export default function Donation() {
                                 ...values,
                                 alertStyleId: (values.alertStyleId ||
                                   undefined) as Id<"alertStyles">,
-                                goalStyleId: (values.alertStyleId ||
+                                goalStyleId: (values.goalStyleId ||
                                   undefined) as Id<"goalStyles">,
                               });
                               toast({
@@ -581,8 +581,8 @@ function FormGoalStyles({
 
 const formSchemaGoal = z.object({
   title: z.string(),
-  alertStyleId: z.string(),
-  goalStyleId: z.string(),
+  alertStyleId: z.optional(z.string()),
+  goalStyleId: z.optional(z.string()),
   total: z.number(),
 });
 function FormGoal({

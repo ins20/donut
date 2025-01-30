@@ -83,8 +83,8 @@ export default function Donation() {
     return <div>Loading...</div>;
   }
   return (
-    <div className="flex flex-col gap-6 p-6 h-full">
-      <div className="flex items-center">
+    <div className="flex flex-col gap-6 p-6 md:h-full">
+      <div className="flex md:flex-row flex-col items-center">
         <Button onClick={signOut} size={"sm"} className="w-fit">
           Выйти
         </Button>
@@ -100,8 +100,8 @@ export default function Donation() {
         </Button>
       </div>
 
-      <div className="flex gap-6 h-full">
-        <Card className="w-1/2 h-full">
+      <div className="flex md:flex-row flex-col gap-6 md:h-full">
+        <Card className="md:w-1/2 md:h-full">
           <CardHeader>
             <CardTitle>Донаты</CardTitle>
           </CardHeader>
@@ -130,10 +130,10 @@ export default function Donation() {
             </Table>
           </CardContent>
         </Card>
-        <div className="w-1/2 flex flex-col gap-6 w-full h-full">
-          <div className="flex gap-6 w-full h-1/2">
-            <Card className="w-1/2 h-full">
-              <CardHeader className="flex flex-row items-center justify-between w-full">
+        <div className="w-1/2 flex flex-col gap-6 w-full md:h-full">
+          <div className="flex md:flex-row flex-col gap-6 w-full h-1/2">
+            <Card className="w-full md:w-1/2 h-full">
+              <CardHeader className="flex flex-col md:flex-row items-center justify-between w-full">
                 <CardTitle className="w-fit">Стили оповещения</CardTitle>
                 <Button className="w-fit" size={"sm"} onClick={handleAddAlert}>
                   Новый стиль оповещения
@@ -193,7 +193,7 @@ export default function Donation() {
                 </Tabs>
               </CardContent>
             </Card>
-            <Card className="w-1/2 h-full">
+            <Card className="w-full md:w-1/2 h-full">
               <CardHeader className="flex flex-row items-center justify-between w-full">
                 <CardTitle className="w-fit">Стили сборов</CardTitle>
                 <Button
@@ -252,7 +252,7 @@ export default function Donation() {
               </CardContent>
             </Card>
           </div>
-          <Card className="h-1/2">
+          <Card className="md:h-1/2">
             <CardHeader className="flex flex-row items-center justify-between w-full">
               <CardTitle className="w-fit">Сборы</CardTitle>
               <Button size={"sm"} className="w-fit" onClick={handleAddGoal}>
@@ -642,7 +642,7 @@ function FormGoal({
   }, [formGoal, debouncedOnUpdate]);
   return (
     <Form {...formGoal}>
-      <form className="flex items-center gap-3">
+      <form className="flex md:flex-row flex-col items-center gap-3">
         <span>{collected} /</span>
         <FormField
           control={formGoal.control}

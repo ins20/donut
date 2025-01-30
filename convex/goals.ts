@@ -1,7 +1,6 @@
 import { v } from "convex/values";
 import { mutation, MutationCtx, query } from "./_generated/server";
 import { getStreamerId } from "./users";
-import { Id } from "./_generated/dataModel";
 
 export async function generateDefaultTitle(ctx: MutationCtx) {
   const streamerId = await getStreamerId(ctx);
@@ -18,8 +17,6 @@ export const createGoal = mutation({
     const title = await generateDefaultTitle(ctx);
     const createdAt = Date.now();
     return await ctx.db.insert("goals", {
-      alertStyleId: "k97e4qnb5mh5qep0ymqr3es8q579c737" as Id<"alertStyles">,
-      goalStyleId: "ks7684g8hcrzn4pq99cbrf36rh79cce6" as Id<"goalStyles">,
       title,
       createdAt,
       streamerId,
@@ -51,7 +48,7 @@ export const getGoalById = query({
       goal.alertStyleId ? ctx.db.get(goal.alertStyleId) : null,
       goal.goalStyleId ? ctx.db.get(goal.goalStyleId) : null,
     ]);
-    
+
     return {
       ...goal,
       alertStyle,

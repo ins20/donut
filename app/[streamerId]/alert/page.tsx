@@ -53,7 +53,7 @@ export default function Widget({
               }}
               className="text-8xl font-bold"
             >
-              ${latestDonation.amount.toFixed(2)}
+              ₽{latestDonation.amount.toFixed(2)}
             </p>
           </div>
           <p

@@ -119,7 +119,7 @@ export default function Donation() {
                 {donations.map((donation) => (
                   <TableRow key={donation._id}>
                     <TableCell>{donation.name}</TableCell>
-                    <TableCell>${donation.amount.toFixed(2)}</TableCell>
+                    <TableCell>₽{donation.amount.toFixed(2)}</TableCell>
                     <TableCell>{donation.message}</TableCell>
                     <TableCell>
                       {new Date(donation.createdAt).toLocaleString()}

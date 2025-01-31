@@ -31,7 +31,7 @@ export default function Widget({
       {!showDonation || !latestDonation ? (
         <></>
       ) : (
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col gap-6 items-center justify-center">
           {latestDonation.goal?.alertStyle?.image && (
             <Image
               alt={latestDonation.goal?.title || ""}

@@ -3,6 +3,7 @@
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useQuery } from "convex/react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Widget({
@@ -30,41 +31,48 @@ export default function Widget({
       {!showDonation || !latestDonation ? (
         <></>
       ) : (
-        <div
-          style={{
-            color: latestDonation.goal?.alertStyle?.textColor,
-            backgroundColor: latestDonation.goal?.alertStyle?.backgroundColor,
-            fontSize: latestDonation.goal?.alertStyle?.fontSize,
-          }}
-          className="p-4 rounded-lg shadow-lg"
-        >
-          <div className="flex items-center">
-            <h2
-              style={{
-                WebkitTextStroke: "5px black",
-              }}
-              className="text-8xl font-bold"
-            >
-              {latestDonation.name}-
-            </h2>
+        <>
+          <Image
+            alt={latestDonation.goal?.title || ""}
+            width={200}
+            src={latestDonation.goal?.alertStyle?.image || ""}
+          />
+          <div
+            style={{
+              color: latestDonation.goal?.alertStyle?.textColor,
+              backgroundColor: latestDonation.goal?.alertStyle?.backgroundColor,
+              fontSize: latestDonation.goal?.alertStyle?.fontSize,
+            }}
+            className="p-4 rounded-lg shadow-lg"
+          >
+            <div className="flex items-center">
+              <h2
+                style={{
+                  WebkitTextStroke: "5px black",
+                }}
+                className="text-8xl font-bold"
+              >
+                {latestDonation.name}-
+              </h2>
+              <p
+                style={{
+                  WebkitTextStroke: "5px black",
+                }}
+                className="text-8xl font-bold"
+              >
+                ₽{latestDonation.amount.toFixed(2)}
+              </p>
+            </div>
             <p
               style={{
                 WebkitTextStroke: "5px black",
               }}
-              className="text-8xl font-bold"
+              className="text-8xl"
             >
-              ₽{latestDonation.amount.toFixed(2)}
+              {latestDonation.message}
             </p>
           </div>
-          <p
-            style={{
-              WebkitTextStroke: "5px black",
-            }}
-            className="text-8xl"
-          >
-            {latestDonation.message}
-          </p>
-        </div>
+        </>
       )}
     </div>
   );

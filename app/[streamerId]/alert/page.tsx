@@ -31,12 +31,15 @@ export default function Widget({
       {!showDonation || !latestDonation ? (
         <></>
       ) : (
-        <>
-          <Image
-            alt={latestDonation.goal?.title || ""}
-            width={200}
-            src={latestDonation.goal?.alertStyle?.image || ""}
-          />
+        <div className="flex flex-col justify-center">
+          {latestDonation.goal?.alertStyle?.image && (
+            <Image
+              alt={latestDonation.goal?.title || ""}
+              width={200}
+              src={latestDonation.goal?.alertStyle?.image}
+            />
+          )}
+
           <div
             style={{
               color: latestDonation.goal?.alertStyle?.textColor,
@@ -72,7 +75,7 @@ export default function Widget({
               {latestDonation.message}
             </p>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

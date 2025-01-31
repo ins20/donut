@@ -44,38 +44,15 @@ export default function Widget({
             style={{
               color: latestDonation.goal?.alertStyle?.textColor,
               backgroundColor: latestDonation.goal?.alertStyle?.backgroundColor,
+              fontSize: latestDonation.goal?.alertStyle?.fontSize + "px",
             }}
             className="p-4 rounded-lg shadow-lg"
           >
             <div className="flex items-center">
-              <h2
-                style={{
-                  fontSize: latestDonation.goal?.alertStyle?.fontSize + "px",
-                  WebkitTextStroke: "5px black",
-                }}
-                className="text-8xl font-bold"
-              >
-                {latestDonation.name}-
-              </h2>
-              <p
-                style={{
-                  fontSize: latestDonation.goal?.alertStyle?.fontSize + "px",
-                  WebkitTextStroke: "5px black",
-                }}
-                className="text-8xl font-bold"
-              >
-                ₽{latestDonation.amount.toFixed(2)}
-              </p>
+              <h2>{latestDonation.name}-</h2>
+              <p>₽{latestDonation.amount.toFixed(2)}</p>
             </div>
-            <p
-              style={{
-                fontSize: latestDonation.goal?.alertStyle?.fontSize + "px",
-                WebkitTextStroke: "5px black",
-              }}
-              className="text-8xl"
-            >
-              {latestDonation.message}
-            </p>
+            <p>{latestDonation.message}</p>
           </div>
         </div>
       )}

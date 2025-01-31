@@ -44,13 +44,13 @@ export default function Widget({
             style={{
               color: latestDonation.goal?.alertStyle?.textColor,
               backgroundColor: latestDonation.goal?.alertStyle?.backgroundColor,
-              fontSize: latestDonation.goal?.alertStyle?.fontSize,
             }}
             className="p-4 rounded-lg shadow-lg"
           >
             <div className="flex items-center">
               <h2
                 style={{
+                  fontSize: latestDonation.goal?.alertStyle?.fontSize + "px",
                   WebkitTextStroke: "5px black",
                 }}
                 className="text-8xl font-bold"
@@ -59,6 +59,7 @@ export default function Widget({
               </h2>
               <p
                 style={{
+                  fontSize: latestDonation.goal?.alertStyle?.fontSize + "px",
                   WebkitTextStroke: "5px black",
                 }}
                 className="text-8xl font-bold"
@@ -68,6 +69,7 @@ export default function Widget({
             </div>
             <p
               style={{
+                fontSize: latestDonation.goal?.alertStyle?.fontSize + "px",
                 WebkitTextStroke: "5px black",
               }}
               className="text-8xl"

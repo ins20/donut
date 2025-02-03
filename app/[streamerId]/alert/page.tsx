@@ -18,6 +18,7 @@ export default function Widget({
 
   useEffect(() => {
     if (latestDonation) {
+      console.log(latestDonation.goal);
       setShowDonation(true);
       const timer = setTimeout(() => {
         setShowDonation(false);

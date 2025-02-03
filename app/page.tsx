@@ -1,7 +1,7 @@
 "use client";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Card, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function Home() {
   const { signIn } = useAuthActions();

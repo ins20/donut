@@ -26,7 +26,7 @@ export default function Home() {
           Donut предлагает самую гибкую и удобную систему донатов с нулевыми комиссиями и мгновенными выплатами.
         </p>
         <div className="flex flex-col md:flex-row gap-4">
-          <Button className="bg-black text-white hover:bg-gray-800">Начать бесплатно</Button>
+          <Button className="bg-black text-white hover:bg-gray-800"  onClick={() => signIn("google")}>Начать бесплатно</Button>
           <Button variant="outline">Узнать больше</Button>
         </div>
       </section>

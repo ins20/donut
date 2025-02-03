@@ -8,140 +8,137 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-gray-900">
-      {/* Navigation */}
-      <nav className="flex items-center justify-between px-8 py-4 border-b">
-        <h1 className="text-2xl font-bold">Donut</h1>
+      {/* Навигация */}
+      <nav className="flex items-center justify-between px-4 md:px-8 py-4 border-b">
+        <h1 className="text-xl md:text-2xl font-bold">Donut</h1>
         <Button 
           onClick={() => signIn("google")}
-          className="bg-black text-white hover:bg-gray-800"
+          className="bg-black text-white hover:bg-gray-800 text-sm md:text-base"
         >
-          Get Started
+          Начать
         </Button>
       </nav>
 
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center px-4 py-20 text-center">
-        <h1 className="text-6xl font-bold mb-4">Revolutionize Your Stream Donations</h1>
-        <p className="text-xl mb-8 text-gray-600 max-w-2xl">
-          Donut offers the most flexible and creator-friendly donation system with 
-          zero platform fees and instant payouts.
+      {/* Главный раздел */}
+      <section className="flex flex-col items-center justify-center px-4 py-12 md:py-20 text-center">
+        <h1 className="text-3xl md:text-6xl font-bold mb-4">Революция в донатах на стримах</h1>
+        <p className="text-base md:text-xl mb-8 text-gray-600 max-w-2xl">
+          Donut предлагает самую гибкую и удобную систему донатов с нулевыми комиссиями и мгновенными выплатами.
         </p>
-        <div className="flex gap-4">
-          <Button className="bg-black text-white hover:bg-gray-800">Start Free</Button>
-          <Button variant="outline">Learn More</Button>
+        <div className="flex flex-col md:flex-row gap-4">
+          <Button className="bg-black text-white hover:bg-gray-800">Начать бесплатно</Button>
+          <Button variant="outline">Узнать больше</Button>
         </div>
       </section>
 
-      {/* Comparison Section */}
-      <section className="bg-gray-50 py-16">
+      {/* Секция сравнения */}
+      <section className="bg-gray-50 py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Why Choose Donut?</h2>
-          <div className="flex justify-between">
-            <Card className="p-6">
-              <CardTitle className="mb-4">Donut vs Others</CardTitle>
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12">Почему Donut?</h2>
+          <div className="flex flex-col md:flex-row justify-between gap-8">
+            <Card className="p-6 flex-1">
+              <CardTitle className="mb-4">Donut vs Другие</CardTitle>
               <div className="space-y-4">
                 <div className="flex justify-between border-b pb-2">
-                  <span>Transaction Fees</span>
+                  <span>Комиссии</span>
                   <span>0% vs 5-10%</span>
                 </div>
                 <div className="flex justify-between border-b pb-2">
-                  <span>Payout Speed</span>
-                  <span>Instant vs 3-7 days</span>
+                  <span>Скорость выплат</span>
+                  <span>Мгновенно vs 3-7 дней</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Customization</span>
-                  <span>Full vs Limited</span>
+                  <span>Настройка</span>
+                  <span>Полная vs Ограниченная</span>
                 </div>
               </div>
             </Card>
             
-            <Card className="p-6">
-              <CardTitle className="mb-4">Key Features</CardTitle>
+            <Card className="p-6 flex-1">
+              <CardTitle className="mb-4">Основные функции</CardTitle>
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <CheckIcon className="w-5 h-5 mr-2 text-green-500" />
-                  Multi-platform Support
+                  Поддержка нескольких платформ
                 </li>
                 <li className="flex items-center">
                   <CheckIcon className="w-5 h-5 mr-2 text-green-500" />
-                  Advanced Analytics
+                  Расширенная аналитика
                 </li>
                 <li className="flex items-center">
                   <CheckIcon className="w-5 h-5 mr-2 text-green-500" />
-                  Chargeback Protection
+                  Защита от возвратов
                 </li>
               </ul>
             </Card>
-
-        
           </div>
         </div>
       </section>
 
-      {/* Workflow Section */}
-      <section className="py-16">
+      {/* Секция процесса работы */}
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">How It Works</h2>
-          <div className="grid md:grid-cols-4 gap-8">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12">Как это работает</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4">1</div>
-              <h3 className="text-xl font-semibold mb-2">Sign Up</h3>
-              <p className="text-gray-600">Connect your streaming account</p>
+              <h3 className="text-xl font-semibold mb-2">Регистрация</h3>
+              <p className="text-gray-600">Подключите свой стриминговый аккаунт</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4">2</div>
-              <h3 className="text-xl font-semibold mb-2">Customize</h3>
-              <p className="text-gray-600">Design your donation widgets</p>
+              <h3 className="text-xl font-semibold mb-2">Настройка</h3>
+              <p className="text-gray-600">Создайте свои виджеты для донатов</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4">3</div>
-              <h3 className="text-xl font-semibold mb-2">Go Live</h3>
-              <p className="text-gray-600">Start receiving donations</p>
+              <h3 className="text-xl font-semibold mb-2">Стрим</h3>
+              <p className="text-gray-600">Начните получать донаты</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4">4</div>
-              <h3 className="text-xl font-semibold mb-2">Withdraw</h3>
-              <p className="text-gray-600">Instant payouts to your bank</p>
+              <h3 className="text-xl font-semibold mb-2">Вывод</h3>
+              <p className="text-gray-600">Мгновенные выплаты на ваш счет</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="bg-gray-50 py-16">
+      {/* Секция FAQ */}
+      <section className="bg-gray-50 py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12">Часто задаваемые вопросы</h2>
           <div className="max-w-3xl mx-auto space-y-4">
             <Card className="p-6">
-              <CardTitle>Is there any fee?</CardTitle>
+              <CardTitle>Есть ли комиссии?</CardTitle>
               <CardDescription className="mt-2">
-                Donut charges 0% platform fees. We only deduct standard payment processing fees.
+                Donut не берет комиссий. Мы вычитаем только стандартные платежные сборы.
               </CardDescription>
             </Card>
             <Card className="p-6">
-              <CardTitle>Can I use custom alerts?</CardTitle>
+              <CardTitle>Можно ли использовать кастомные уведомления?</CardTitle>
               <CardDescription className="mt-2">
-                Yes, our widget editor allows full customization of alerts, sounds, and visuals.
+                Да, наш редактор позволяет полностью настраивать уведомления, звуки и визуальные эффекты.
               </CardDescription>
             </Card>
             <Card className="p-6">
-              <CardTitle>How fast are payouts?</CardTitle>
+              <CardTitle>Как быстро происходят выплаты?</CardTitle>
               <CardDescription className="mt-2">
-                All withdrawals are processed instantly to your connected payment method.
+                Все выплаты обрабатываются мгновенно на ваш платежный метод.
               </CardDescription>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t py-8 mt-16">
+      {/* Футер */}
+      <footer className="border-t py-8 mt-12 md:mt-16">
         <div className="container mx-auto px-4 text-center text-gray-600">
-          <p>© 2023 Donut. All rights reserved.</p>
-          <div className="mt-4 flex justify-center gap-4">
-            <a href="#" className="hover:text-gray-900">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-900">Terms of Service</a>
-            <a href="#" className="hover:text-gray-900">Support</a>
+          <p>© 2023 Donut. Все права защищены.</p>
+          <div className="mt-4 flex flex-col md:flex-row justify-center gap-4">
+            <a href="#" className="hover:text-gray-900">Политика конфиденциальности</a>
+            <a href="#" className="hover:text-gray-900">Условия использования</a>
+            <a href="#" className="hover:text-gray-900">Поддержка</a>
           </div>
         </div>
       </footer>

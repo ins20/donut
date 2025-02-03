@@ -2,7 +2,6 @@
 import { useAuthActions } from "@convex-dev/auth/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
   const { signIn } = useAuthActions();
@@ -22,7 +21,6 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center px-4 py-20 text-center">
-        <Badge variant="outline" className="mb-4">New Platform</Badge>
         <h1 className="text-6xl font-bold mb-4">Revolutionize Your Stream Donations</h1>
         <p className="text-xl mb-8 text-gray-600 max-w-2xl">
           Donut offers the most flexible and creator-friendly donation system with 
@@ -75,16 +73,7 @@ export default function Home() {
               </ul>
             </Card>
 
-            <Card className="p-6">
-              <CardTitle className="mb-4">Integrations</CardTitle>
-              <div className="flex flex-wrap gap-4">
-                <Badge variant="outline">Twitch</Badge>
-                <Badge variant="outline">YouTube</Badge>
-                <Badge variant="outline">Kick</Badge>
-                <Badge variant="outline">OBS</Badge>
-                <Badge variant="outline">Streamlabs</Badge>
-              </div>
-            </Card>
+        
           </div>
         </div>
       </section>
